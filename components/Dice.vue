@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import type { GTDiceNumbers } from '@/types/dice';
+
 const props = defineProps<{
-  value: typeNumbersFromDie;
+  value: GTDiceNumbers;
 }>();
 
-const sidesCubeConfig: Record<typeNumbersFromDie, { y: number; x: number }> = {
+const sidesCubeConfig: Record<GTDiceNumbers, { y: number; x: number }> = {
   1: {
     y: 0,
     x: 360,

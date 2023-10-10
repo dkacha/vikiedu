@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useSound } from '@vueuse/sound';
-import Fireworks from '@fireworks-js/vue';
-
+import { typeGuardGTDiceNumbers } from '@/types/dice';
 import {
   diceCompleted,
   diceInArray,
@@ -26,21 +25,11 @@ watch(diceCompleted, () => {
     playAudioWin();
   }
 });
-
-const typeGuardCheckNumbersFromDie = (
-  value: number,
-): value is typeNumbersFromDie => {
-  return [1, 2, 3, 4, 5, 6].includes(value);
-};
 </script>
 
 <template>
   <v-container class="dice-area">
-    <Fireworks
-      v-if="diceCompleted"
-      class="fireworks"
-      :options="{ autoresize: false }"
-    />
+    <Fireworks v-if="diceCompleted" />
     <v-row class="h-100">
       <v-col
         v-for="oneDice in diceInArrayRandom"
@@ -49,7 +38,7 @@ const typeGuardCheckNumbersFromDie = (
         class="d-flex justify-center align-center h-50"
       >
         <dice-drag-drop
-          v-if="typeGuardCheckNumbersFromDie(oneDice)"
+          v-if="typeGuardGTDiceNumbers(oneDice)"
           :value="oneDice"
         />
       </v-col>
@@ -73,15 +62,6 @@ const typeGuardCheckNumbersFromDie = (
 .dice-area {
   height: calc(100% - 300px);
   user-select: none;
-}
-
-.fireworks {
-  width: 100%;
-  height: calc(100% - 300px);
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
 }
 
 .target-area {

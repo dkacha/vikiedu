@@ -7,7 +7,7 @@
     <v-app-bar>
       <v-container class="d-flex">
         <v-app-bar-title>
-          <NuxtLink to="/"> Vikiedu </NuxtLink>
+          <NuxtLink class="logo" to="/"> Vikiedu </NuxtLink>
         </v-app-bar-title>
 
         <v-spacer></v-spacer>
@@ -23,3 +23,14 @@
     </v-main>
   </v-app>
 </template>
+
+<style lang="scss" scoped>
+.logo {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #009299;
+  display: inline-block;
+  font-size: 25px;
+  margin-top: 4px;
+}
+</style>

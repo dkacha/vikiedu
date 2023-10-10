@@ -5,4 +5,14 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   devtools: { enabled: true },
+  app: {
+    head: {
+      meta: [
+        {
+          'http-equiv': 'Cache-Control',
+          content: 'no-cache, no-store, must-revalidate',
+        },
+      ],
+    },
+  },
 });

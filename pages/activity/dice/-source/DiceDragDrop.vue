@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { GTDiceNumbers } from '@/types/dice';
 import { useDraggable } from '@vueuse/core';
 import { useDice } from './useDice';
 
 const props = defineProps<{
-  value: typeNumbersFromDie;
+  value: GTDiceNumbers;
 }>();
 
 const { updateDiceData } = useDice(props.value);
@@ -23,6 +24,7 @@ const { x, y, style } = useDraggable(refDice, {
 <template>
   <div
     ref="refDice"
+    class="dice"
     :style="[style, { position: x === 0 && y === 0 ? 'relative' : 'fixed' }]"
   >
     <Dice :value="value" />
@@ -31,6 +33,7 @@ const { x, y, style } = useDraggable(refDice, {
 
 <style lang="scss" scoped>
 .dice {
-  cursor: grabbing;
+  user-select: none;
+  touch-action: none;
 }
 </style>

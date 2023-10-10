@@ -1,8 +1,8 @@
-export const numbersFromDie = [1, 2, 3, 4, 5, 6] as const;
+import type { GTDiceNumbers } from '@/types/dice';
 
-export type typeNumbersFromDie = (typeof numbersFromDie)[number];
+export const numbersFromDie: GTDiceNumbers[] = [1, 2, 3, 4, 5, 6];
 
-export const useRandomNumberFromDie = (): typeNumbersFromDie => {
+export const useRandomNumberFromDie = (): GTDiceNumbers => {
   const randomNumber = useRandomNumber(numbersFromDie[0], numbersFromDie[5]);
 
   numbersFromDie.forEach((number) => {
